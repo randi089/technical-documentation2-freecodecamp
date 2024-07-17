@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Dokumentasi Penggunaan Array di Javascript</title>
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>JS Array</header>
+      <a href="#apa_itu_array?" class="nav-link">Apa itu Array?</a>
+      <a href="#array.prototype.filter()" class="nav-link">Array.prototype.filter()</a>
+      <a href="#array.prototype.find()" class="nav-link">Array.prototype.find()</a>
+      <a href="#array.prototype.foreach()" class="nav-link">Array.prototype.forEach()</a>
+      <a href="#array.prototype.indexof()" class="nav-link">Array.prototype.indexOf()</a>
+      <a href="#array.prototype.map()" class="nav-link">Array.prototype.map()</a>
+      <a href="#array.prototype.reduce()" class="nav-link">Array.prototype.reduce()</a>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="apa_itu_array?">
+        <header>Apa itu Array?</header>
+        <p>Objek Array, seperti halnya array dalam bahasa pemrograman lain, memungkinkan penyimpanan kumpulan beberapa item dalam satu nama variabel, dan memiliki anggota untuk melakukan operasi array umum.</p>
+        <p class="bold">Deskripsi</p>
+        <p>Di JavaScript, array bukanlah primitif melainkan objek Array dengan karakteristik inti berikut:</p>
+        <ul>
+          <li>Array di JavaScript dapat diubah ukurannya dan dapat berisi campuran tipe data yang berbeda. (Jika karakteristik tersebut tidak diinginkan, gunakan array yang diketik sebagai gantinya.)</li>
+          <li>
+            Array di JavaScript bukanlah array asosiatif sehingga elemen array tidak dapat diakses menggunakan string sebagai index, namun harus diakses menggunakan bilangan integer non-negatif (atau bentuk stringnya masing-masing) sebagai
+            index.
+          </li>
+          <li>Index Array di JavaScript dimulai dari nol: elemen pertama array berada pada index 0, elemen kedua berada pada index 1, dan seterusnya. Elemen terakhir bernilai dari panjang array dikurangi 1 (array.length-1).</li>
+          <li>Operasi penyalinan array JavaScript membuat salinan dangkal. (Semua operasi penyalinan bawaan standar dengan objek JavaScript apa pun akan menghasilkan salinan dangkal, bukan salinan dalam).</li>
+        </ul>
+      </section>
+
+      <section class="main-section" id="array.prototype.filter()">
+        <header>Array.prototype.filter()</header>
+        <p>Metode filter() dari instance Array membuat salinan dangkal dari sebagian array tertentu, disaring hingga hanya elemen dari array tertentu yang lulus pengujian yang diterapkan oleh fungsi yang disediakan.</p>
+        <p class="bold">Contoh :</p>
+        <code>
+          <pre>
+  nst words = ['spray', 'elite', 'exuberant', 'destruction', 'present']; 
+
+  const result = words.filter((word) => word.length > 6); 
+
+  console.log(result);
+  // Expected output: Array ["exuberant", "destruction", "present"]
+        </pre
+          >
+        </code>
+        <p class="bold">Syntax</p>
+        <code>
+          <pre>
+  filter(callbackFn)
+  filter(callbackFn, thisArg)
+        </pre
+          >
+        </code>
+        <p class="bold">Deskripsi</p>
+        <p>
+          Metode filter() adalah metode berulang. Ia memanggil fungsi callbackFn yang disediakan satu kali untuk setiap elemen dalam array, dan membuat array baru dari semua nilai yang callbackFn mengembalikan nilai sebenarnya. Elemen array
+          yang tidak lolos uji callbackFn tidak disertakan dalam array baru. Baca bagian metode berulang untuk informasi selengkapnya tentang cara kerja metode ini secara umum.
+        </p>
+        <p>callbackFn dipanggil hanya untuk indeks array yang telah menetapkan nilai. Itu tidak dipanggil untuk slot kosong dalam array yang jarang.</p>
+        <p>The filter() method is generic. It only expects the this value to have a length property and integer-keyed properties.</p>
+      </section>
+
+      <section class="main-section" id="array.prototype.find()">
+        <header>Array.prototype.find()</header>
+        <p>Metode find() dari instance Array mengembalikan elemen pertama dalam array yang disediakan yang memenuhi fungsi pengujian yang disediakan. Jika tidak ada nilai yang memenuhi fungsi pengujian, undefinisi dikembalikan.</p>
+        <ul>
+          <li>Jika Anda memerlukan indeks elemen yang ditemukan dalam array, gunakan findIndex().</li>
+          <li>Jika Anda perlu mencari indeks suatu nilai, gunakan indexOf(). (Ini mirip dengan findIndex(), tetapi memeriksa kesetaraan setiap elemen dengan nilainya alih-alih menggunakan fungsi pengujian.)</li>
+          <li>Jika Anda perlu mengetahui apakah suatu nilai ada dalam array, gunakan include(). Sekali lagi, ia memeriksa kesetaraan setiap elemen dengan nilainya alih-alih menggunakan fungsi pengujian.</li>
+          <li>Jika Anda perlu mengetahui apakah ada elemen yang memenuhi fungsi pengujian yang disediakan, gunakan some().</li>
+          <li>Jika Anda perlu menemukan semua elemen yang memenuhi fungsi pengujian yang disediakan, gunakan filter().</li>
+        </ul>
+        <p class="bold">Contoh :</p>
+        <code>
+          <pre>
+  const array1 = [5, 12, 8, 130, 44];
+
+  const found = array1.find((element) => element > 10);
+
+  console.log(found);
+  // Expected output: 12
+        </pre
+          >
+        </code>
+        <p class="bold">Syntax</p>
+        <code>
+          <pre>
+  find(callbackFn)
+  find(callbackFn, thisArg)
+        </pre
+          >
+        </code>
+        <p class="bold">Deskripsi</p>
+        <p>
+          Metode find() adalah metode berulang. Ia memanggil fungsi callbackFn yang disediakan satu kali untuk setiap elemen dalam array dalam urutan indeks menaik, hingga callbackFn mengembalikan nilai yang sebenarnya. find() lalu
+          mengembalikan elemen itu dan menghentikan iterasi melalui array. Jika callbackFn tidak pernah mengembalikan nilai yang sebenarnya, find() mengembalikan nilai yang tidak terdefinisi. Baca bagian metode berulang untuk informasi
+          selengkapnya tentang cara kerja metode ini secara umum.
+        </p>
+        <p>callbackFn dipanggil untuk setiap indeks array, bukan hanya indeks dengan nilai yang ditetapkan. Slot kosong dalam array renggang berperilaku sama seperti tidak terdefinisi.</p>
+        <p>Metode find() bersifat umum. Ia hanya mengharapkan nilai ini memiliki properti panjang dan properti dengan kunci bilangan bulat.</p>
+      </section>
+
+      <section class="main-section" id="array.prototype.foreach()">
+        <header>Array.prototype.forEach()</header>
+        <p>Metode forEach() pada instance Array mengeksekusi fungsi yang disediakan satu kali untuk setiap elemen array.</p>
+        <p class="bold">Contoh :</p>
+        <code>
+          <pre>
+  const array1 = ['a', 'b', 'c'];
+
+  array1.forEach((element) => console.log(element));
+  // Expected output: "a"
+  // Expected output: "b"
+  // Expected output: "c"
+        </pre
+          >
+        </code>
+        <p class="bold">Syntax</p>
+        <code>
+          <pre>
+  forEach(callbackFn)
+  forEach(callbackFn, thisArg)
+        </pre
+          >
+        </code>
+        <p class="bold">Deskripsi</p>
+        <p>
+          Metode forEach() adalah metode berulang. Ia memanggil fungsi callbackFn yang disediakan satu kali untuk setiap elemen dalam array dalam urutan indeks menaik. Tidak seperti map(), forEach() selalu mengembalikan tidak terdefinisi
+          dan tidak dapat dirantai. Kasus penggunaan umumnya adalah mengeksekusi efek samping di akhir rantai. Baca bagian metode berulang untuk informasi selengkapnya tentang cara kerja metode ini secara umum.
+        </p>
+        <p>callbackFn dipanggil hanya untuk indeks array yang telah menetapkan nilai. Itu tidak dipanggil untuk slot kosong dalam array yang jarang.</p>
+        <p>Metode forEach() bersifat umum. Ia hanya mengharapkan nilai ini memiliki properti panjang dan properti dengan kunci bilangan bulat.</p>
+        <p>Tidak ada cara untuk menghentikan atau memutus perulangan forEach() selain dengan memberikan pengecualian. Jika Anda memerlukan perilaku seperti itu, metode forEach() adalah alat yang salah.</p>
+        <p>
+          Pengakhiran dini dapat dilakukan dengan pernyataan perulangan seperti for, for...of, dan for...in. Metode array seperti every(), some(), find(), dan findIndex() juga segera menghentikan iterasi ketika iterasi lebih lanjut tidak
+          diperlukan.
+        </p>
+        <p>forEach() mengharapkan fungsi sinkron — ia tidak menunggu janji. Pastikan Anda mengetahui implikasinya saat menggunakan janji (atau fungsi async) sebagai callback forEach.</p>
+      </section>
+
+      <section class="main-section" id="array.prototype.indexof()">
+        <header>Array.prototype.indexOf()</header>
+        <p>Metode indexOf() pada instance Array mengembalikan indeks pertama di mana elemen tertentu dapat ditemukan dalam array, atau -1 jika tidak ada.</p>
+        <p class="bold">Contoh :</p>
+        <code>
+          <pre>
+  const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+  console.log(beasts.indexOf('bison'));
+  // Expected output: 1
+  // Start from index 2
+
+  console.log(beasts.indexOf('bison', 2));
+  // Expected output: 4
+
+  console.log(beasts.indexOf('giraffe'));
+  // Expected output: -1
+        </pre
+          >
+        </code>
+        <p class="bold">Syntax</p>
+        <code>
+          <pre>
+  indexOf(searchElement)
+  indexOf(searchElement, fromIndex)
+        </pre
+          >
+        </code>
+        <p class="bold">Deskripsi</p>
+        <p>
+          Metode indexOf() membandingkan searchElement dengan elemen array menggunakan kesetaraan yang ketat (algoritma yang sama yang digunakan oleh operator ===). Nilai NaN tidak pernah dibandingkan secara setara, jadi indexOf() selalu
+          mengembalikan -1 ketika searchElement adalah NaN.
+        </p>
+        <p>Metode indexOf() melewatkan slot kosong dalam array yang jarang.</p>
+        <p>Metode indexOf() bersifat umum. Ia hanya mengharapkan nilai ini memiliki properti panjang dan properti dengan kunci bilangan bulat.</p>
+      </section>
+
+      <section class="main-section" id="array.prototype.map()">
+        <header>Array.prototype.map()</header>
+        <p>Metode map() pada instance Array membuat array baru yang diisi dengan hasil pemanggilan fungsi yang disediakan pada setiap elemen dalam array pemanggil.</p>
+        <p class="bold">Contoh :</p>
+        <code>
+          <pre>
+  const array1 = [1, 4, 9, 16];
+
+  // Pass a function to map
+  const map1 = array1.map((x) => x * 2);
+
+  console.log(map1);
+  // Expected output: Array [2, 8, 18, 32]
+        </pre
+          >
+        </code>
+        <p class="bold">Syntax</p>
+        <code>
+          <pre>
+  map(callbackFn)
+  map(callbackFn, thisArg)
+        </pre
+          >
+        </code>
+        <p class="bold">Deskripsi</p>
+        <p>
+          Metode map() adalah metode berulang. Ia memanggil fungsi callbackFn yang disediakan satu kali untuk setiap elemen dalam array dan membuat array baru dari hasilnya. Baca bagian metode berulang untuk informasi selengkapnya tentang
+          cara kerja metode ini secara umum.
+        </p>
+        <p>callbackFn dipanggil hanya untuk indeks array yang telah menetapkan nilai. Itu tidak dipanggil untuk slot kosong dalam array yang jarang.</p>
+        <p>callbackFn dipanggil hanya untuk indeks array yang telah menetapkan nilai. Itu tidak dipanggil untuk slot kosong dalam array yang jarang.</p>
+        <p>Metode map() bersifat umum. Ia hanya mengharapkan nilai ini memiliki properti panjang dan properti dengan kunci bilangan bulat.</p>
+        <p>Karena map membuat larik baru, memanggilnya tanpa menggunakan larik yang dikembalikan merupakan anti-pola; gunakan forEach atau for...of sebagai gantinya.</p>
+      </section>
+
+      <section class="main-section" id="array.prototype.reduce()">
+        <header>Array.prototype.reduce()</header>
+        <p>
+          Metode pengurangan() pada instance Array mengeksekusi fungsi panggilan balik "peredam" yang disediakan pengguna pada setiap elemen array, secara berurutan, meneruskan nilai kembalian dari perhitungan pada elemen sebelumnya. Hasil
+          akhir menjalankan peredam di seluruh elemen array adalah nilai tunggal.
+        </p>
+        <p>
+          Pertama kali panggilan balik dijalankan tidak ada "nilai kembalian dari perhitungan sebelumnya". Jika disediakan, nilai awal dapat digunakan sebagai gantinya. Jika tidak, elemen array pada indeks 0 digunakan sebagai nilai awal dan
+          iterasi dimulai dari elemen berikutnya (indeks 1, bukan indeks 0).
+        </p>
+        <p class="bold">Contoh :</p>
+        <code>
+          <pre>
+  const array1 = [1, 2, 3, 4];
+
+  // 0 + 1 + 2 + 3 + 4
+  const initialValue = 0;
+  const sumWithInitial = array1.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    initialValue,
+  );
+
+  console.log(sumWithInitial);
+  // Expected output: 10
+        </pre
+          >
+        </code>
+        <p class="bold">Syntax</p>
+        <code>
+          <pre>
+  reduce(callbackFn)
+  reduce(callbackFn, initialValue)
+        </pre
+          >
+        </code>
+        <p class="bold">Deskripsi</p>
+        <p>
+          Metode pengurangan() adalah metode berulang. Ia menjalankan fungsi panggilan balik "peredam" pada semua elemen dalam larik, dalam urutan indeks menaik, dan mengumpulkannya menjadi satu nilai. Setiap kali, nilai kembalian
+          callbackFn diteruskan ke callbackFn lagi pada pemanggilan berikutnya sebagai akumulator. Nilai akhir akumulator (yang merupakan nilai yang dikembalikan dari callbackFn pada iterasi terakhir array) menjadi nilai kembalian dari
+          pengurangan(). Baca bagian metode berulang untuk informasi selengkapnya tentang cara kerja metode ini secara umum.
+        </p>
+        <p>callbackFn dipanggil hanya untuk indeks array yang telah menetapkan nilai. Itu tidak dipanggil untuk slot kosong dalam array yang jarang.</p>
+        <p>Tidak seperti metode iteratif lainnya, pengurangan() tidak menerima argumen thisArg. callbackFn selalu dipanggil dengan undefinisi seperti ini, yang diganti dengan globalThis jika callbackFn tidak ketat.</p>
+        <p>
+          pengurangan() adalah konsep sentral dalam pemrograman fungsional, yang tidak memungkinkan untuk mengubah nilai apa pun, jadi untuk mengakumulasi semua nilai dalam array, seseorang harus mengembalikan nilai akumulator baru pada
+          setiap iterasi. Konvensi ini menyebar ke pengurangan() JavaScript: Anda harus menggunakan metode penyebaran atau penyalinan lainnya jika memungkinkan untuk membuat array dan objek baru sebagai akumulator, daripada mengubah yang
+          sudah ada. Jika Anda memutuskan untuk memutasikan akumulator alih-alih menyalinnya, ingatlah untuk tetap mengembalikan objek yang diubah dalam panggilan balik, atau iterasi berikutnya akan menjadi tidak terdefinisi. Namun,
+          perhatikan bahwa penyalinan akumulator pada gilirannya dapat menyebabkan peningkatan penggunaan memori dan penurunan kinerja — lihat Kapan tidak menggunakan pengurangan() untuk detail selengkapnya. Dalam kasus seperti itu, untuk
+          menghindari kinerja buruk dan kode tidak terbaca, lebih baik menggunakan perulangan for sederhana.
+        </p>
+        <p>Metode pengurangan() bersifat umum. Ia hanya mengharapkan nilai ini memiliki properti panjang dan properti dengan kunci bilangan bulat.</p>
+      </section>
+    </main>
+  </body>
+</html>

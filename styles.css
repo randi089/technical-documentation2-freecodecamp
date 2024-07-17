@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
+
+:root {
+  --color: #333;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url(https://media.licdn.com/dms/image/C4E12AQHc4Jlfb_7h1g/article-cover_image-shrink_720_1280/0/1623864355741?e=2147483647&v=beta&t=RLzoXuiLPdNmuOPhzcw511Y3zr-OVlWYeuGpdce2oY0);
+  position: fixed;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+body {
+  font-family: "Monstserrat", sans-serif;
+  display: flex;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+main > section > header,
+nav > header {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+nav > header {
+  padding: 20px 0 10px;
+  text-align: center;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* Nav */
+nav {
+  border-right: 2px solid var(--color);
+  height: 100vh;
+  width: 300px;
+  overflow-y: auto;
+}
+
+nav > a {
+  display: block;
+  text-decoration: none;
+  border-top: 1px solid var(--color);
+  padding: 20px;
+  color: var(--color);
+  transition: all 0.3s;
+}
+
+nav > a:nth-last-child(1) {
+  border-bottom: 1px solid var(--color);
+}
+
+nav > a:hover {
+  background-color: #f2f522;
+  box-shadow: inset 0 0 1px #000;
+}
+
+/* Main */
+main {
+  width: 80vw;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+main > section > code > pre {
+  background-color: #999;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  main {
+    overflow-y: unset;
+    height: 100%;
+    width: 100%;
+  }
+
+  nav {
+    height: 300px;
+    border-bottom: 1px solid var(--color);
+    overflow-y: scroll;
+    width: unset;
+  }
+}
